@@ -16,7 +16,7 @@
 	limitations under the License.
 
 */
-
+/*Alteração necessária feita por Lera (2021-09-12). As URL's das thumbs (em especifico, a padrão) era inserida sem o "HTTPS". Apenas a porta padrão (não segura).*/
 
 // 		ATENÇÃO: defina os detalhes do seu blog e 
 // 		servidor no arquivo axe_config.php, e não aqui.
@@ -275,10 +275,10 @@ function loadpostvars() {
 		}
 		if (!isset($transfpost["%%POSTICON%%"])) {
 			if (!isset($transfpost["%%POSTMETAMYSTAMP%%"])) {
-				$transfpost["%%POSTICON%%"]=blogparm('BLOGURL').blogparm("THEMESPATH").blogparm("THEME")."posticons/noicon.jpg";
+				$transfpost["%%POSTICON%%"]=blogparm('BLOGURL').blogparm("THEMESPATH").blogparm("THEME")."posticons/noicon.png";
 			} else {
 				$transfpost["%%POSTICON%%"]=$transfpost["%%POSTMETAMYSTAMP%%"];
-				if (substr($transfpost["%%POSTICON%%"],0,5)!="http:") $transfpost["%%POSTICON%%"]="http://static.efetividade.net/img/".$transfpost["%%POSTICON%%"];
+				if (substr($transfpost["%%POSTICON%%"],0,5)!="https:") $transfpost["%%POSTICON%%"]="https://media.suitedosnerds.com/Images/".$transfpost["%%POSTICON%%"];
 			}	
 		}
 		if (trim(strtoupper($transfpost["%%POSTICON%%"]) != "NEWS")) setpageicon($transfpost["%%POSTICON%%"]);
@@ -306,7 +306,7 @@ function loadpostvars() {
 		}
 		$transfpost["%%POSTURL%%"]=preg_replace('/(....\/..)\/..(\/.*)/',"\\1\\2",$transfpost["%%POSTURL%%"]);
 		setpageurl(blogparm('BLOGURL').blogparm('POSTSURLPREFIX').$transfpost["%%POSTURL%%"]);
-		$transfpost["%%POSTSHORT%%"]=cutonword(strip_tags(corrigehtml($POST['POSTBODY'])),250);		
+		$transfpost["%%POSTSHORT%%"]=cutonword(strip_tags(corrigehtml($POST['POSTBODY'])),333);		
 		if (empty($transfpost["%%DESC%%"])) {
 			setpagedesc($transfpost["%%POSTSHORT%%"]);
 		} else {
@@ -315,8 +315,8 @@ function loadpostvars() {
 		$transfpost["%%POSTFEAT%%"]=buscaparagrafos($POST['POSTBODY'],6,1000);
 		$transfpost["%%POSTMID%%"]=trim(cutonword(strip_tags(corrigehtml($POST['POSTBODY'])),350));
 		$transfpost["%%POSTMID%%"]=preg_replace('/[[:cntrl:]]/',"",$transfpost["%%POSTMID%%"]);		
-		//$transfpost["%%POSTMID%%"]=strip_tags($transfpost["%%POSTMID%%"]);				
-		$transfpost["%%POSTBODY%%"]=paragrafos(corrigehtml($POST['POSTBODY']));		
+		$transfpost["%%POSTMID%%"]=strip_tags($transfpost["%%POSTMID%%"]);				
+		//$transfpost["%%POSTBODY%%"]=paragrafos(corrigehtml($POST['POSTBODY']));		
 		$transfpost["%%POSTNEWSBODY%%"]=corrigehtml($POST['POSTBODY']);		
 		if (!isset($transfpost['POSTAUTHOR'])) {
 			$transfpost['%%POSTAUTHOR%%']=blogparm('BLOGOWNER');
@@ -329,8 +329,8 @@ function loadpostvars() {
 		}
 		$transfpost['%%POSTTWIT%%']=$transfpost['%%POSTTWIT%%']." %CR%%CR%".blogparm('BLOGURL').blogparm('POSTSURLPREFIX').$transfpost['%%POSTURL%%'];		
 		// %25CR%25 é o mesmo que %CR%, mas url-encoded
-		$transfpost['%%POSTTWITTHIS%%']=preg_replace('/%25CR%25/',"\n",'http://twitter.com/home?status='.urlencode(html_entity_decode("☞ ".$transfpost['%%POSTTWIT%%'])."\nvia @".$transfpost['%%POSTAUTHORTWITTER%%']));
-		$transfpost['%%POSTSHARETHIS%%']="http://www.facebook.com/sharer/sharer.php?u=".blogparm('BLOGURL').blogparm('POSTSURLPREFIX').$transfpost['%%POSTURL%%'];
+		$transfpost['%%POSTTWITTHIS%%']=preg_replace('/%25CR%25/',"\n",'https://twitter.com/home?status='.urlencode(html_entity_decode("☞ ".$transfpost['%%POSTTWIT%%'])."\nvia @".$transfpost['%%POSTAUTHORTWITTER%%']));
+		$transfpost['%%POSTSHARETHIS%%']="https://www.facebook.com/sharer/sharer.php?u=".blogparm('BLOGURL').blogparm('POSTSURLPREFIX').$transfpost['%%POSTURL%%'];
 		$transfpost['%%DESTAQUES%%']=quadro_destaques();
 	} else {
 		// se ainda não foi lido nenhum post
@@ -1394,7 +1394,7 @@ function sitemap() {
 	sort($postsfiles);
 	$contaitems=0;
 	$item='<?xml version="1.0" encoding="UTF-8"?>
-	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
+	<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">'."\n";
 	for ($i=count($postsfiles)-1; $i >=0; $i--) {
 		$fpost=$postsfiles[$i];
 		unset($GLOBALS['POST']);
