@@ -1,3 +1,7 @@
+<h1>Atualização (2021.09.14)</h1>
+
+Há anos, depois de uma discussão com o Augusto, eu tenho a minha versão do código. Reconheço que eu não sou muito bom em programação, mas eu quase não alterei nada no código. Na data em que escrevo isso, apenas fiz com que o link da thumb automatica fosse gerado com um "HTTPS". O Augusto não parece ligar muito para a segurança.
+
 <h1>AXE CMS</h1>
 
 O Axe é um sistema gerenciador de conteúdo estático especializado na geração de blogs. Em outras palavras: o Axe é um sistema em PHP que, a partir de arquivos contendo apenas o título e o corpo do post, em formato texto ou HTML, gera toda a estrutura típica de um blog: índices, feed, tags, sitemap, etc.
