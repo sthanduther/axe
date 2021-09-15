@@ -16,7 +16,7 @@
 	limitations under the License.
 
 */
-/*Alteração necessária feita por Lera (2021-09-12). As URL's das thumbs (em especifico, a padrão) era inserida sem o "HTTPS". Apenas a porta padrão (não segura).*/
+/*Alteração necessária feita por Lera (2021-09-12). As URL's das thumbs (em especifico, a padrão) era inserida sem o "HTTPS". Apenas a porta padrão (não segura). */
 
 // 		ATENÇÃO: defina os detalhes do seu blog e 
 // 		servidor no arquivo axe_config.php, e não aqui.
